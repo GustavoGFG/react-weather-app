@@ -14,14 +14,13 @@ export const WeatherApp = () => {
   const [weatherIcon, setWeatherIcon] = useState('');
   const [humidityIcon, setHumidityIcon] = useState('');
   const [windIcon, setWindIcon] = useState('');
-  const apiKey = 'ba00abd317894106542944cc4baff2c9';
 
   const search = async () => {
     const element = document.getElementsByClassName('cityInput');
     if (element[0].value === '') {
       return;
     }
-    const apiUrl = `https://api.openweathermap.org/data/2.5/weather?units=metric&q=${element[0].value}&appid=${apiKey}`;
+    const apiUrl = `https://api.openweathermap.org/data/2.5/weather?units=metric&q=${element[0].value}&appid=${process.env.REACT_APP_API_KEY}`;
 
     const response = await fetch(apiUrl);
     let data = await response.json();
